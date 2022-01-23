@@ -1,30 +1,37 @@
 import React from 'react';
-  
-function App() {
-  
+import { Link, useParams } from 'react-router-dom'  
+
+const Homepage = () => {  
  const students = [
               {
                 'id': 1, 
                 'name': 'Praveen', 
                 'gender': 'Male',
-                'url': 'https://google.com'
+                'email':'praveen@gmail.com',
+                'age':'58',
+                'position':'Developer',
               },
               {
                 'id': 2, 
                 'name': 'Nandhini', 
                 'gender': 'Female',
-                'url': 'https://facebook.com'
+                'email':'nandhini@gmail.com',
+                'age':'65',
+                'position':'Intern',
               },
               {
                 'id': 3, 
                 'name': 'Pavi', 
                 'gender': 'Female',
-                'url': 'https://instagram.com'
+                'email':'pavi@gmail.com',
+                'age':'55',
+                'position':'CEO',
               },
           ];
   
   return (
     <div className="container">
+      <h3>Homepage</h3>
       <table className="table table-bordered">
           <tr>
               <th>Sl No</th>
@@ -36,9 +43,9 @@ function App() {
             <tr data-index={index}>
               <td>{student.id}</td>
               <td>
-                <a href={student.url}>
+                <Link to={'/userdetails/' + student.id}>
                   {student.name}
-                </a>
+                </Link>
               </td>
               <td>{student.gender}</td>
             </tr>
@@ -49,4 +56,73 @@ function App() {
   );
 }
   
-export default App;
+const Userdetails = () => { 
+  let { student_id } = useParams();
+  const students = [
+      {
+        'id': 1, 
+        'name': 'Praveen', 
+        'gender': 'Male',
+        'email':'praveen@gmail.com',
+        'age':'58',
+        'position':'Developer',
+      },
+      {
+        'id': 2, 
+        'name': 'Nandhini', 
+        'gender': 'Female',
+        'email':'nandhini@gmail.com',
+        'age':'65',
+        'position':'Intern',
+      },
+      {
+        'id': 3, 
+        'name': 'Pavi', 
+        'gender': 'Female',
+        'email':'pavi@gmail.com',
+        'age':'55',
+        'position':'CEO',
+      },
+  ];
+
+  return (
+    <div className="container">
+      <h3>Userdetails {student_id}</h3>
+      <table className="table table-bordered">
+          <tr>
+            <th>Name</th>
+            <td>
+              {}
+            </td>
+          </tr>
+          <tr>
+            <th>Gender</th>
+            <td>
+              {}
+            </td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td>
+              {}
+            </td>
+          </tr>
+          <tr>
+            <th>Age</th>
+            <td>
+              {}
+            </td>
+          </tr>
+          <tr>
+            <th>Position</th>
+            <td>
+              {}
+            </td>
+          </tr>
+      </table>
+    </div>
+  )
+
+}
+
+export { Homepage, Userdetails };
