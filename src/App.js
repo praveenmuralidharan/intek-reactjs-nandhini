@@ -87,44 +87,44 @@ const Userdetails = () => {
 
   return (
     <div className="container">
-        {
-          students.map((item) => {
-            return (item.id === parseInt(student_id) ? 
-            <table className="table table-bordered">
-              <tr>
-                <th>Name</th>
-                <td>
-                  {item.name}
-                </td>
-              </tr>
-              <tr>
-                <th>Gender</th>
-                <td>
-                  {item.gender}
-                </td>
-              </tr>
-              <tr>
-                <th>Email</th>
-                <td>
-                  {item.email}
-                </td>
-              </tr>
-              <tr>
-                <th>Age</th>
-                <td>
-                  {item.age}
-                </td>
-              </tr>
-              <tr>
-                <th>Position</th>
-                <td>
-                  {item.position}
-                </td>
-              </tr>   
-            </table>
-            :"")
-          })
-        }
+      {
+        students.map((item) => {
+          return (item.id === parseInt(student_id) ? 
+          <table className="table table-bordered">
+            <tr>
+              <th>Name</th>
+              <td>
+                {item.name}
+              </td>
+            </tr>
+            <tr>
+              <th>Gender</th>
+              <td>
+                {item.gender}
+              </td>
+            </tr>
+            <tr>
+              <th>Email</th>
+              <td>
+                {item.email}
+              </td>
+            </tr>
+            <tr>
+              <th>Age</th>
+              <td>
+                {item.age}
+              </td>
+            </tr>
+            <tr>
+              <th>Position</th>
+              <td>
+                {item.position}
+              </td>
+            </tr>   
+          </table>
+          :"")
+        })
+      }
     </div>
   )
 
