@@ -1,6 +1,6 @@
 import React from 'react'; 
 
-const Header = () => {  
+const Header = ({user_name}) => {  
   return (<div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -27,7 +27,9 @@ const Header = () => {
                     </ul>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
+                        <a class="nav-link">
+                            Hi {user_name},
+                        </a>
                     </li>
                 </ul>
                 </div>

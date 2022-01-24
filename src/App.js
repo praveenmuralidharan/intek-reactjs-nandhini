@@ -1,34 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom'  
 
 const Homepage = () => {  
- const students = [
-              {
-                'id': 1, 
-                'name': 'Praveen', 
-                'gender': 'Male',
-                'email':'praveen@gmail.com',
-                'age':'58',
-                'position':'Developer',
-              },
-              {
-                'id': 2, 
-                'name': 'Nandhini', 
-                'gender': 'Female',
-                'email':'nandhini@gmail.com',
-                'age':'65',
-                'position':'Intern',
-              },
-              {
-                'id': 3, 
-                'name': 'Pavi', 
-                'gender': 'Female',
-                'email':'pavi@gmail.com',
-                'age':'55',
-                'position':'CEO',
-              },
-          ];
-  
+
+  const [students, update_students] = useState([]);
+
+  const Getfromjsonfile = () => {
+    try{
+      fetch( "./json/students.json" )
+        .then(json_response => {
+          console.log(json_response)
+          update_students(json_response)
+        })
+    }
+    catch(error){
+      console.log(error)
+    }
+  }
+
   return (
     <div className="container">
       <h3>Homepage</h3>
@@ -38,7 +27,7 @@ const Homepage = () => {
               <th>Name</th>
               <th>Gender</th>
           </tr>
-
+          { console.log(students) }
           {students.map((student, index) => (
             <tr data-index={index}>
               <td>{student.id}</td>
