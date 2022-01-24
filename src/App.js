@@ -9,7 +9,7 @@ const Homepage = () => {
                 'gender': 'Male',
                 'email':'praveen@gmail.com',
                 'age':'58',
-                'position':'Developer',
+                'position':'Develonpmper',
               },
               {
                 'id': 2, 
@@ -89,34 +89,41 @@ const Userdetails = () => {
     <div className="container">
       <h3>Userdetails {student_id}</h3>
       <table className="table table-bordered">
+         
+            <tr>
+            <th>Name</th>
+              <td>{students.name}</td>
+            
+            </tr>
+         
           <tr>
             <th>Name</th>
             <td>
-              {}
+            {students.name}
             </td>
           </tr>
           <tr>
             <th>Gender</th>
             <td>
-              {}
+              {students.gender}
             </td>
           </tr>
           <tr>
             <th>Email</th>
             <td>
-              {}
+              {students.email}
             </td>
           </tr>
           <tr>
             <th>Age</th>
             <td>
-              {}
+              {students.age}
             </td>
           </tr>
           <tr>
             <th>Position</th>
             <td>
-              {}
+              {students.position}
             </td>
           </tr>
       </table>
