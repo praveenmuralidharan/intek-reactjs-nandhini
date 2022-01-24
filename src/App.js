@@ -7,9 +7,9 @@ const Homepage = () => {
 
   const Getfromjsonfile = () => {
     try{
-      fetch( "./json/students.json" )
+      fetch( "http://localhost/students.json" )
+        .then(response => response.json())
         .then(json_response => {
-          console.log(json_response)
           update_students(json_response)
         })
     }
@@ -17,6 +17,10 @@ const Homepage = () => {
       console.log(error)
     }
   }
+
+  useEffect(() => {
+    Getfromjsonfile();
+  })
 
   return (
     <div className="container">
@@ -27,19 +31,18 @@ const Homepage = () => {
               <th>Name</th>
               <th>Gender</th>
           </tr>
-          { console.log(students) }
+          { console.log("students", students) }
           {students.map((student, index) => (
             <tr data-index={index}>
               <td>{student.id}</td>
               <td>
                 <Link to={'/userdetails/' + student.id}>
-                  {student.name}
+                  {student.Name}
                 </Link>
               </td>
-              <td>{student.gender}</td>
+              <td>{student.Gender}</td>
             </tr>
           ))}
-
       </table>
     </div>
   );
