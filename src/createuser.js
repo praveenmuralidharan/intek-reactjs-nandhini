@@ -21,10 +21,15 @@ const CreateUser = () => {
         catch(error){
           console.log("Error:", error)
         }
-      }
+    }
     
 
-    const CreateBtn = () => {
+    useEffect(() => {
+        Getfromjsonfile();
+    },[persona])
+    
+    const CreateBtn = async () => {
+        
         let newjson = {
             "Name" : name,
             "Gender" : gender,
@@ -33,9 +38,8 @@ const CreateUser = () => {
             "Club" : club,
             "Persona" : persona
         }
-         
-        Getfromjsonfile();
-        update_allstudents[allstudents.push[newjson]];
+        
+        update_allstudents(allstudents.concat(newjson));
     }
 return(
 <div className='container'>
