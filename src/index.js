@@ -5,13 +5,14 @@ import './index.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { Homepage , Userdetails } from './App';
 import { Layout } from './components/Layout';
-
+import {CreateUser} from './createuser.js';
 ReactDOM.render(
   <Layout>
     <Router>
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/userdetails/:student_id" component={Userdetails} />
+        <Route exact path="/createuser" component={CreateUser} />
       </Switch>
     </Router>
   </Layout>,

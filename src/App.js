@@ -34,8 +34,13 @@ const Homepage = () => {
     Getfromjsonfile();
   },[rowLimit])
 
+
+
   return (
     <div className="container">
+            <Link to={'/createuser'}>
+                Create
+                </Link> 
       <h3>Homepage</h3>
       <table className="table table-bordered">
         <tbody>
