@@ -1,22 +1,47 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+
 const CreateUser = () => {  
-    
+
+    const [allstudents, update_allstudents] = useState([]);
     const [name, setName] = useState("");
     const [gender, setGender] = useState(1);
     const [classs, setClass] = useState("");
     const [seat, setSeat] = useState("");
     const [club, setClub] = useState("");
     const [persona, setPersona] = useState("");
+    const Getfromjsonfile = () => {
+        try{
+          fetch( "/students.json" )
+            .then(response => response.json())
+            .then(json_response => {
+              update_allstudents(json_response)
+            })
+        }
+        catch(error){
+          console.log("Error:", error)
+        }
+      }
+    
 
+    const CreateBtn = () => {
+        let newjson = {
+            "Name" : name,
+            "Gender" : gender,
+            "Class" : classs,
+            "Seat" :seat,
+            "Club" : club,
+            "Persona" : persona
+        }
+         
+        Getfromjsonfile();
+        update_allstudents[allstudents.push[newjson]];
+    }
 return(
 <div className='container'>
     <div className='row'>
         <div className='col'>
-        <form>
-                <fieldset>Create New user</fieldset>
-                <br></br>
-                <br></br>
+     
                 <label>Name</label>&nbsp;&nbsp;
                 <input className="form-control" type="text" required onChange={e => setName(e.target.value)} value={name} />
                 <br></br>
@@ -48,8 +73,9 @@ return(
                 <input className="form-control" type="text" required onChange={e => setPersona(e.target.value)} value={persona}/>
                 <br></br>
                 <br></br>
-                <button className="btn btn-primary" value="Create">Create</button>
-            </form>
+                <button className="btn btn-primary" value="Create" onClick={CreateBtn}>Create</button>
+          
+            {allstudents.length}
         </div>
     </div>
 </div>
