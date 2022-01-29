@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-
 const Homepage = () => {  
 
   const [allstudents, update_allstudents] = useState([]);
@@ -38,9 +37,9 @@ const Homepage = () => {
 
   return (
     <div className="container">
-            <Link to={'/createuser'}>
-                Create
-                </Link> 
+      <Link to={'/createuser'}>
+        Create
+      </Link> 
       <h3>Homepage</h3>
       <table className="table table-bordered">
         <tbody>
