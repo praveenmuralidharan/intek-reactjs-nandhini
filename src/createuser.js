@@ -23,7 +23,6 @@ const CreateUser = () => {
         }
     }
     
-
     useEffect(() => {
         Getfromjsonfile();
     },[persona])
@@ -78,8 +77,6 @@ return(
                 <br></br>
                 <br></br>
                 <button className="btn btn-primary" value="Create" onClick={CreateBtn}>Create</button>
-          
-            {allstudents.length}
         </div>
     </div>
 </div>
