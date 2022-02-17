@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import Axios from 'axios';
+
 
 const Homepage = () => {  
 
@@ -7,13 +9,42 @@ const Homepage = () => {
   const [students, update_students] = useState([]);
   const [rowLimit, update_rowLimit] = useState(0);
 
+  const AxiosPostMethod = () => {
+    try{
+      Axios({
+        method: "post",
+        url: "http://crexaglobal.com/nandhini-post-method.php",
+        data: {
+          name: "nandhini",
+          age: "50",
+          gender: "female"
+        },
+        header: {
+          'Content-Type': 'text/plain'
+        }}
+        )
+        .then(res => {
+          console.log(res)
+        })
+    }
+    catch(error){
+      console.log("Error:", error)
+    }
+  }
+
   const Getfromjsonfile = () => {
     try{
-      fetch( "/students.json" )
-        .then(response => response.json())
+      Axios.get( "/students.json" )
         .then(json_response => {
-          update_allstudents(json_response)
-          update_students(json_response.slice(rowLimit, rowLimit + 10))
+          if(json_response.status == 200)
+          {
+            update_allstudents(json_response.data)
+            update_students(json_response.data.slice(rowLimit, rowLimit + 10))
+          }
+          else
+          {
+            throw("Something went wrong please try after sometime!")
+          }
         })
     }
     catch(error){
@@ -31,6 +62,7 @@ const Homepage = () => {
 
   useEffect(() => {
     Getfromjsonfile();
+    AxiosPostMethod();
   },[rowLimit])
 
 
@@ -50,7 +82,7 @@ const Homepage = () => {
           </tr>
         
           {students.map((student, index) => (
-            <tr data-index={index}>
+            <tr data-index={index} key={index}>
               <td>{student.id}</td>
               <td>
                 <Link to={'/userdetails/' + student.id}>

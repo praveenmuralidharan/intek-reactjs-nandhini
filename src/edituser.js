@@ -37,7 +37,7 @@ const EditUser = () => {
           "Class" : classs,
       }
         
-      //axios.post('http://localhost:44307/Api/Student/AddotrUpdatestudent/', newjson).then(res => console.log(res.data));  
+     
     }
 
   
