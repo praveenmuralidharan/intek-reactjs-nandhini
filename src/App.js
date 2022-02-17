@@ -63,6 +63,11 @@ const Homepage = () => {
                   
                  }
                 </td>
+                <td>
+                <Link to={'/edituser/' + student.id}>
+                  Edit
+                </Link>
+                </td>
             </tr>
           ))}
           </tbody>
